@@ -2,7 +2,7 @@ import { View, StyleSheet, Dimensions } from "react-native";
 import React from "react";
 
 export default function Dot({color}) {
-  return <View style={[styles.container, { backgroundColor: {color} }]}></View>;
+  return <View style={[styles.container, { backgroundColor: color }]}></View>;
 }
 const styles = StyleSheet.create({
   container: {

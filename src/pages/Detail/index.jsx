@@ -10,9 +10,9 @@ import React from "react";
 import Dot from "../../components/Dot";
 
 export default function Detail({ navigation }) {
-  navigation.setOptions({
-    headerTitle: "Camisa Azul Listrada",
-  });
+  // navigation.setOptions({
+  //   title: "Camisa Azul Listrada",
+  // });
   return (
     <ScrollView style={styles.container}>
       <Image source={require("../../assets/detail.png")} style={styles.image} />
@@ -30,6 +30,11 @@ export default function Detail({ navigation }) {
           <Dot color="lightgreen" />
           <Dot color="black" />
           <Dot color="grey" />
+        </View>
+        <View style={{flexDirection: 'row', width: '100%'}}>
+        <ScrollView>
+          
+        </ScrollView>
         </View>
       </View>
     </ScrollView>
