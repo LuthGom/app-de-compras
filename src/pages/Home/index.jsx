@@ -8,7 +8,12 @@ import {
   View,
 } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
+import Produtos from "../../components/produtos";
+import {useNavigation} from "@react-navigation/native"
 export default function Home() {
+
+
+  const navigation = useNavigation();
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -28,6 +33,66 @@ export default function Home() {
         </View>
       </View>
       <View style={styles.line}></View>
+
+      <ScrollView>
+        <Text style={styles.text}>LANÇAMENTOS</Text>
+        <View style={{ flexDirection: "row", justifyContent: "space-around" }}>
+          <Produtos
+            img={require("../../assets/camisa-azul-listra.jpg")}
+            preco={"R$100,00"}
+            titulo="Camisa Azul Listrada"
+            onClick={() => navigation.navigate('Detail')}
+          />
+          <Produtos
+            img={require("../../assets/bermuda-azul.jpg")}
+            preco={"R$100,00"}
+            titulo="Bermuda Azul"
+            onClick={() => navigation.navigate('Detail')}
+          />
+        </View>
+        <View style={{ flexDirection: "row", justifyContent: "space-around" }}>
+          <Produtos
+            img={require("../../assets/camisa-polo.jpg")}
+            preco={"R$80,00"}
+            titulo="Camisa Pólo"
+            onClick={() => navigation.navigate('Detail')}
+          />
+          <Produtos
+            img={require("../../assets/chapeu-retro.jpg")}
+            preco={"R$65,00"}
+            titulo="chapeu-retro"
+            onClick={() => navigation.navigate('Detail')}
+          />
+        </View>
+        <View style={{ flexDirection: "row", justifyContent: "space-around" }}>
+          <Produtos
+            img={require("../../assets/cinto.jpg")}
+            preco={"R$35,00"}
+            titulo="cinto"
+            onClick={() => navigation.navigate('Detail')}
+          />
+          <Produtos
+            img={require("../../assets/oculos-de-sol.jpg")}
+            preco={"R$100,00"}
+            titulo="oculos-de-sol"
+            onClick={() => navigation.navigate('Detail')}
+          />
+        </View>
+        <View style={{ flexDirection: "row", justifyContent: "space-around" }}>
+          <Produtos
+            img={require("../../assets/sapato-preto.jpg")}
+            preco={"R$100,00"}
+            titulo="sapato-preto"
+            onClick={() => navigation.navigate('Detail')}
+          />
+          <Produtos
+            img={require("../../assets/terno.jpg")}
+            preco={"R$100,00"}
+            titulo="terno"
+            onClick={() => navigation.navigate('Detail')}
+          />
+        </View>
+      </ScrollView>
     </View>
   );
 }
