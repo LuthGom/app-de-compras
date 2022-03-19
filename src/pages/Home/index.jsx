@@ -8,8 +8,8 @@ import {
   View,
 } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
-import Produtos from "../../components/produtos";
-import {useNavigation} from "@react-navigation/native"
+import Produtos from "../../components/Produtos";
+import {useNavigation} from "@react-navigation/native";
 export default function Home() {
 
 
