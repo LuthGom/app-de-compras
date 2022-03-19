@@ -8,7 +8,11 @@ import {
   Button,
 } from "react-native";
 import TextField from "../../components/TextField";
+import { useNavigation } from "@react-navigation/native";
+
 export default function Login() {
+
+  const navigation = useNavigation();
   return (
     <View style={styles.container}>
       <Image source={require("../../assets/logo.png")} style={styles.logo} />
@@ -18,7 +22,11 @@ export default function Login() {
         <TextField label="Senha" />
       </View>
       <TouchableOpacity style={{ width: "80%" }}>
-        <Button title="LOGIN" color="#aaa" />
+        <Button
+        title="LOGIN"
+        color="#aaa"
+        onPress={() => navigation.navigate('Home')}
+        />
       </TouchableOpacity>
     </View>
   );
