@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import Produtos from "../../components/Produtos";
-import {useNavigation} from "@react-navigation/native"
+import {useNavigation} from "@react-navigation/native";
 export default function Home() {
 
 
