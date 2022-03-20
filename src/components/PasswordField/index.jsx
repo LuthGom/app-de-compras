@@ -1,7 +1,16 @@
-import { View, Text, TextInput, StyleSheet, SafeAreaView } from "react-native";
 import React, { useState } from "react";
+import {
+  View,
+  Text,
+  TextInput,
+  SafeAreaView,
+  TouchableOpacity,
+  StyleSheet,
+} from "react-native";
+import { Ionicons } from "@expo/vector-icons";
+export default function PasswordField({ label, onChange, value }) {
+  const [isInVisible, setInvisible] = useState(true);
 
-export default function TextField({ label, password, value, onChange }) {
   return (
     <View style={styles.container}>
       <View style={{ width: "80%", justifyContent: "flex-start" }}>
@@ -10,11 +19,16 @@ export default function TextField({ label, password, value, onChange }) {
       <SafeAreaView style={styles.textContainer}>
         <TextInput
           style={styles.textField}
-          secureTextEntry={password}
-          editable={true}
+          secureTextEntry={isInVisible}
           value={value}
           onChangeText={onChange}
         />
+
+        <TouchableOpacity onPress={() => setInvisible(!isInVisible)}>
+          {(isInVisible && <Ionicons name="eye" color="#000" size={25} />) || (
+            <Ionicons name="eye-off" color="#000" size={25} />
+          )}
+        </TouchableOpacity>
       </SafeAreaView>
     </View>
   );
