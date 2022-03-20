@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   Image,
   ScrollView,
@@ -9,22 +9,37 @@ import {
 } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import Produtos from "../../components/Produtos";
-import {useNavigation} from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
+import Api from "../../services/Api";
 export default function Home() {
-
-
   const navigation = useNavigation();
+  const [produtos, setProdutos] = useState([]);
+  const get = () => {
+    fetch(Api + "/produtos", {})
+      .then((resposta) => resposta.json())
+      .then((data) => {
+        const filter = data.Produtos;
+        setProdutos(filter);
+      })
+      .catch((erro) => {
+        console.log(erro.message);
+      });
+  };
+  useEffect(() => {
+    get();
+  }, []);
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Image
-          source={require("../../assets/banner.png")}
+        {/* <Image
+          // source={require("../../assets/banner.png")}
           style={styles.image}
-        />
+        /> */}
         <View style={styles.textContainer}>
-          <Text style={styles.text}>TÊNIS</Text>
-          <Text style={[styles.text, { color: "#CECECF" }]}>-</Text>
-          <Text style={[styles.text, { color: "#CECECF" }]}>MASCULINO</Text>
+          <Text style={styles.text}>MODA</Text>
+
+          <Text style={[styles.text, { color: "#CECECF" }]}>MASCULINA</Text>
           <TouchableOpacity
             style={{ position: "absolute", right: 0, alignSelf: "center" }}
           >
@@ -38,58 +53,66 @@ export default function Home() {
         <Text style={styles.text}>LANÇAMENTOS</Text>
         <View style={{ flexDirection: "row", justifyContent: "space-around" }}>
           <Produtos
-            img={require("../../assets/camisa-azul-listra.jpg")}
+            img={produtos[0].url_imagens}
             preco={"R$100,00"}
-            titulo="Camisa Azul Listrada"
-            onClick={() => navigation.navigate('Detail')}
+            titulo={produtos[0].titulo}
+            subtitulo={produtos[0].subtitulo}
+            onClick={() => navigation.navigate("Detail")}
           />
           <Produtos
-            img={require("../../assets/bermuda-azul.jpg")}
+            img={produtos[1].url_imagens}
             preco={"R$100,00"}
-            titulo="Bermuda Azul"
-            onClick={() => navigation.navigate('Detail')}
+            titulo={produtos[1].titulo}
+            subtitulo={produtos[1].subtitulo}
+            onClick={() => navigation.navigate("Detail")}
           />
         </View>
         <View style={{ flexDirection: "row", justifyContent: "space-around" }}>
           <Produtos
-            img={require("../../assets/camisa-polo.jpg")}
+            img={produtos[2].url_imagens}
             preco={"R$80,00"}
-            titulo="Camisa Pólo"
-            onClick={() => navigation.navigate('Detail')}
+            titulo={produtos[2].titulo}
+            subtitulo={produtos[2].subtitulo}
+            onClick={() => navigation.navigate("Detail")}
           />
           <Produtos
-            img={require("../../assets/chapeu-retro.jpg")}
+            img={produtos[3].url_imagens}
             preco={"R$65,00"}
-            titulo="chapeu-retro"
-            onClick={() => navigation.navigate('Detail')}
+            titulo={produtos[3].titulo}
+            subtitulo={produtos[3].subtitulo}
+            onClick={() => navigation.navigate("Detail")}
           />
         </View>
         <View style={{ flexDirection: "row", justifyContent: "space-around" }}>
           <Produtos
-            img={require("../../assets/cinto.jpg")}
+            img={produtos[4].url_imagens}
             preco={"R$35,00"}
-            titulo="cinto"
-            onClick={() => navigation.navigate('Detail')}
+            titulo={produtos[4].titulo}
+            subtitulo={produtos[4].subtitulo}
+            onClick={() => navigation.navigate("Detail")}
           />
           <Produtos
-            img={require("../../assets/oculos-de-sol.jpg")}
+            img={produtos[5].url_imagens}
             preco={"R$100,00"}
-            titulo="oculos-de-sol"
-            onClick={() => navigation.navigate('Detail')}
+            titulo={produtos[5].titulo}
+            subtitulo={produtos[5].subtitulo}
+            onClick={() => navigation.navigate("Detail")}
           />
         </View>
         <View style={{ flexDirection: "row", justifyContent: "space-around" }}>
           <Produtos
-            img={require("../../assets/sapato-preto.jpg")}
+            img={produtos[6].url_imagens}
             preco={"R$100,00"}
-            titulo="sapato-preto"
-            onClick={() => navigation.navigate('Detail')}
+            titulo={produtos[6].titulo}
+            subtitulo={produtos[6].subtitulo}
+            onClick={() => navigation.navigate("Detail")}
           />
           <Produtos
-            img={require("../../assets/terno.jpg")}
+            img={produtos[7].url_imagens}
             preco={"R$100,00"}
-            titulo="terno"
-            onClick={() => navigation.navigate('Detail')}
+            titulo={produtos[7].titulo}
+            subtitulo={produtos[7].subtitulo}
+            onClick={() => navigation.navigate("Detail")}
           />
         </View>
       </ScrollView>
@@ -117,6 +140,7 @@ const styles = StyleSheet.create({
     fontFamily: "Roboto_500Medium",
     fontSize: 26,
     marginHorizontal: "1%",
+    textAlign: "center",
   },
   line: {
     borderBottomColor: "#d8d8d8",
