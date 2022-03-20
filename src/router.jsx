@@ -8,8 +8,8 @@ import Detail from "./pages/Detail";
 import Start from "./pages/Start";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
-const Stack = createNativeStackNavigator();
 
+const Stack = createNativeStackNavigator();
 export default function Routes() {
   return (
     <NavigationContainer>
@@ -34,7 +34,7 @@ export default function Routes() {
           component={Home}
           options={{ headerShown: true }}
         />
-        <Stack.Screen
+        {/* <Stack.Screen
           name="Detail"
           component={Detail}
           options={{
@@ -44,7 +44,7 @@ export default function Routes() {
               </TouchableOpacity>
             ),
           }}
-        />
+        /> */}
       </Stack.Navigator>
     </NavigationContainer>
   );

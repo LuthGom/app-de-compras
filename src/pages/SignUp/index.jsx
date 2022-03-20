@@ -50,7 +50,6 @@ export default function SignUp() {
     })
       .then((resposta) => resposta.json())
       .then((data) => {
-        console.log(data);
         navigation.navigate("Home");
       })
       .catch((erro) => {
@@ -71,8 +70,9 @@ export default function SignUp() {
       complemento: complemento,
       senha: senha,
     });
-    console.log(cadastro);
-    post();
+    if (cadastro.nome !== "") {
+      post();
+    }
   }
 
   return (

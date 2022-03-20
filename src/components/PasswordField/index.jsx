@@ -20,7 +20,7 @@ export default function PasswordField({ label, onChange, value }) {
         <TextInput
           style={styles.textField}
           secureTextEntry={isInVisible}
-          value={value}
+          defaultValue={value}
           onChangeText={onChange}
         />
 
