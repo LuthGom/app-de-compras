@@ -10,16 +10,28 @@ import {
 import { MaterialIcons } from "@expo/vector-icons";
 import Produtos from "../../components/Produtos";
 import { useNavigation } from "@react-navigation/native";
+import { NavigationContainer } from "@react-navigation/native";
+import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
+import Detail from "../Detail";
 import Api from "../../services/Api";
+const Tab = createMaterialBottomTabNavigator();
+
 export default function Home() {
   const navigation = useNavigation();
   const [produtos, setProdutos] = useState([]);
+  const [loading, setLoading] = useState(true);
   const get = () => {
-    fetch(Api + "/produtos", {})
+    fetch(Api + "/produtos", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
       .then((resposta) => resposta.json())
       .then((data) => {
         const filter = data.Produtos;
-        setProdutos(filter);
+        setProdutos({ ...filter });
+        setLoading(false);
       })
       .catch((erro) => {
         console.log(erro.message);
@@ -28,14 +40,17 @@ export default function Home() {
   useEffect(() => {
     get();
   }, []);
+  if (loading === true) {
+    return null;
+  }
 
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        {/* <Image
-          // source={require("../../assets/banner.png")}
+        <Image
+          // source={require("../../../assets/icon.png")}
           style={styles.image}
-        /> */}
+        />
         <View style={styles.textContainer}>
           <Text style={styles.text}>MODA</Text>
 

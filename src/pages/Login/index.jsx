@@ -1,12 +1,5 @@
 import React, { useState } from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  Image,
-  TouchableOpacity,
-  Button,
-} from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity, Button } from "react-native";
 import TextField from "../../components/TextField";
 import { useNavigation } from "@react-navigation/native";
 import PasswordField from "../../components/PasswordField";
@@ -24,12 +17,12 @@ export default function Login() {
       body: JSON.stringify(login),
       headers: {
         "Content-Type": "application/json",
+        Accept: "application/json",
       },
     })
       .then((resposta) => resposta.json())
       .then((data) => {
-        console.log(data);
-        navigation.navigate('Home')
+        navigation.navigate("Home");
       })
       .catch((erro) => {
         console.log(erro.message);
@@ -38,7 +31,9 @@ export default function Login() {
 
   function handleLogin() {
     setLogin({ email: input, senha: password });
-    post();
+    if (login.email !== "" && login.senha !== "") {
+      post();
+    }
   }
   return (
     <View style={styles.container}>

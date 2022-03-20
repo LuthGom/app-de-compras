@@ -1,7 +1,6 @@
 import { View, Text, TextInput, StyleSheet, SafeAreaView } from "react-native";
-import React, { useState } from "react";
 
-export default function TextField({ label, password, value, onChange }) {
+export default function TextField({ label, value, onChange }) {
   return (
     <View style={styles.container}>
       <View style={{ width: "80%", justifyContent: "flex-start" }}>
@@ -10,9 +9,7 @@ export default function TextField({ label, password, value, onChange }) {
       <SafeAreaView style={styles.textContainer}>
         <TextInput
           style={styles.textField}
-          secureTextEntry={password}
-          editable={true}
-          value={value}
+          defaultValue={value}
           onChangeText={onChange}
         />
       </SafeAreaView>
