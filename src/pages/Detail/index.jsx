@@ -3,7 +3,7 @@ import {
   View,
   Text,
   ScrollView,
-  Image,
+  // Image,
 } from "react-native";
 import React from "react";
 import Dot from "../../components/Dot";
@@ -17,7 +17,7 @@ export default function Detail({ navigation }) {
   // });
   return (
     <ScrollView style={styles.container}>
-      <Image source={require("../../assets/detail.png")} style={styles.image} />
+      {/* <Image source={require("../../assets/detail.png")} style={styles.image} /> */}
       <View>
         <View>
           <Text style={[styles.title, { fontSize: 24 }]}>R$ 100,00</Text>

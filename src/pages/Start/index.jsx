@@ -14,7 +14,7 @@ export default function Start() {
   return (
     <View style={styles.container}>
       <View style={styles.containerImg}>
-        <Image source={require("../../assets/logo.png")} style={styles.img} />
+        {/* <Image source={require("../../assets/logo.png")} style={styles.img} /> */}
         <Text style={styles.text}>Se vestir bem, é vestir o que gosta!</Text>
       </View>
 

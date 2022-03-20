@@ -9,21 +9,21 @@ export default function Footer() {
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
           <View style={{ marginHorizontal: 10 }}>
             <Produtos
-              img={require("../../assets/cinto.jpg")}
+              // img={require("../../assets/cinto.jpg")}
               preco="R$ 35,00"
               titulo="Cinto"
             />
           </View>
           <View style={{ marginHorizontal: 10 }}>
             <Produtos
-              img={require("../../assets/oculos-de-sol.jpg")}
+              // img={require("../../assets/oculos-de-sol.jpg")}
               preco="R$ 70,00"
               titulo="Óculos de Sol"
             />
           </View>
           <View style={{ marginHorizontal: 10 }}>
             <Produtos
-              img={require("../../assets/sapato-preto.jpg")}
+              // img={require("../../assets/sapato-preto.jpg")}
               preco="R$ 140,00"
               titulo="Sapato Preto"
             />
