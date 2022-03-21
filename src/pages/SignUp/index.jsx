@@ -152,7 +152,7 @@ export default function SignUp() {
         {(isChecked && (
           <TouchableOpacity style={styles.btnContainer}>
             <Button
-              title="LOGIN"
+              title="SIGN UP"
               color="#B29722"
               disabled={false}
               onPress={handleSignUp}
