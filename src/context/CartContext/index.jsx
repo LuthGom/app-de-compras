@@ -1,31 +1,29 @@
-import React, { createContext, useContext, useState, useEffect } from "react";
-import { View, Text } from "react-native";
-
-const CartContent = createContext();
+import React, { createContext, useState, useEffect } from "react";
+import { useContext } from "react/cjs/react.production.min";
+export const CartContext = createContext();
 
 export default function CartProvider({ children }) {
-  const [cart, setCart] = useState([]);
+  const [cart, setcart] = useState([]);
   const [totalValue, setTotalValue] = useState();
 
   function add(item) {
     const newCart = cart;
     newCart.push(item);
 
-    setCart(newCart);
+    setcart(newCart);
   }
   const store = {
     add,
     cart,
     totalValue,
   };
-  return <CartContent.Provider value={store}>{children}</CartContent.Provider>;
+  return <CartContext.Provider value={store}>{children}</CartContext.Provider>;
 }
 
 export function useCart() {
-  const context = useContext(CartContent);
+  const context = useContext(CartContext);
 
   const { cart, add, totalValue } = context;
-
   return {
     cart,
     add,

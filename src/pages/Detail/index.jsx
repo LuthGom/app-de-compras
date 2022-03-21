@@ -6,16 +6,17 @@ import {
   Image,
   TouchableOpacity,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import Dot from "../../components/Dot";
 import SizeButton from "../../components/SizeButton";
 import BuyButton from "../../components/Button";
 import Footer from "../../components/Footer";
-import { useCart } from "../../context/Cart";
-import { useNavigation } from "@react-navigation/native";
 import ShoppingCart from "../../components/ShoppingCart";
-export default function Detail({ route, item }) {
-  const { add } = useCart();
+import { useNavigation } from "@react-navigation/native";
+
+export default function Detail({ route }) {
+  // const [cart, setCart] = useState([]);
+  const navigation = useNavigation();
   return (
     <View style={styles.container}>
       <ScrollView>
@@ -55,8 +56,18 @@ export default function Detail({ route, item }) {
             <Text style={styles.textContent}>{route.params?.descricao}</Text>
           </View>
           <BuyButton title="COMPRAR" />
-          <TouchableOpacity onPress={() => add(item)}>
-            <BuyButton title="ADD AO CARRINHO" />
+          <TouchableOpacity>
+            <BuyButton
+              title="ADD AO CARRINHO"
+              onPress={() => (
+              
+                navigation.navigate("Cart", {
+                  url_imagens: route.params?.img,
+                  subtitulo: route.params?.subtitulo,
+                  preco: route.params?.preco,
+                })
+              )}
+            />
           </TouchableOpacity>
 
           <View style={styles.line}></View>

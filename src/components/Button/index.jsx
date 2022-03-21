@@ -1,10 +1,10 @@
 import { View, TouchableOpacity, StyleSheet, Text, Button } from "react-native";
 import React from "react";
 
-export default function Buy({ title }) {
+export default function Buy({ title, onPress }) {
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={styles.btnContainer}>
+      <TouchableOpacity style={styles.btnContainer} onPress={onPress}>
         <Text t style={styles.title}>
           {title}
         </Text>

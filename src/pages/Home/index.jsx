@@ -11,12 +11,8 @@ import { MaterialIcons } from "@expo/vector-icons";
 import Produtos from "../../components/Produtos";
 import { useNavigation } from "@react-navigation/native";
 import Api from "../../services/Api";
-import { useCart } from "../../context/Cart";
-import Cart from "../Cart";
 import ShoppingCart from "../../components/ShoppingCart";
 export default function Home() {
-  const { add } = useCart();
-
   const navigation = useNavigation();
   const [produtos, setProdutos] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -69,7 +65,7 @@ export default function Home() {
       <ScrollView>
         <Text style={styles.text}>LANÇAMENTOS</Text>
         <View style={{ flexDirection: "row", justifyContent: "space-around" }}>
-          <TouchableOpacity onPress={() => add(produtos[0])}>
+          <TouchableOpacity>
             <Produtos
               img={produtos[0].url_imagens}
               preco={"R$100,00"}
@@ -80,11 +76,12 @@ export default function Home() {
                   subtitulo: produtos[0].subtitulo,
                   descricao: produtos[0].descricao,
                   url_imagens: produtos[0].url_imagens,
+                  preco: "100",
                 })
               }
             />
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => add(produtos[1])}>
+          <TouchableOpacity>
             <Produtos
               img={produtos[1].url_imagens}
               preco={"R$100,00"}
@@ -95,13 +92,14 @@ export default function Home() {
                   subtitulo: produtos[1].subtitulo,
                   descricao: produtos[1].descricao,
                   url_imagens: produtos[1].url_imagens,
+                  preco: "100",
                 })
               }
             />
           </TouchableOpacity>
         </View>
         <View style={{ flexDirection: "row", justifyContent: "space-around" }}>
-          <TouchableOpacity onPress={() => add(produtos[2])}>
+          <TouchableOpacity>
             <Produtos
               img={produtos[2].url_imagens}
               preco={"R$80,00"}
@@ -112,11 +110,12 @@ export default function Home() {
                   subtitulo: produtos[2].subtitulo,
                   descricao: produtos[2].descricao,
                   url_imagens: produtos[2].url_imagens,
+                  preco: "80",
                 })
               }
             />
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => add(produtos[3])}>
+          <TouchableOpacity>
             <Produtos
               img={produtos[3].url_imagens}
               preco={"R$65,00"}
@@ -127,13 +126,14 @@ export default function Home() {
                   subtitulo: produtos[3].subtitulo,
                   descricao: produtos[3].descricao,
                   url_imagens: produtos[3].url_imagens,
+                  preco: "65",
                 })
               }
             />
           </TouchableOpacity>
         </View>
         <View style={{ flexDirection: "row", justifyContent: "space-around" }}>
-          <TouchableOpacity onPress={() => add(produtos[4])}>
+          <TouchableOpacity>
             <Produtos
               img={produtos[4].url_imagens}
               preco={"R$135,00"}
@@ -144,11 +144,12 @@ export default function Home() {
                   subtitulo: produtos[4].subtitulo,
                   descricao: produtos[4].descricao,
                   url_imagens: produtos[4].url_imagens,
+                  preco: "135",
                 })
               }
             />
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => add(produtos[5])}>
+          <TouchableOpacity>
             <Produtos
               img={produtos[5].url_imagens}
               preco={"R$140,00"}
@@ -159,13 +160,14 @@ export default function Home() {
                   subtitulo: produtos[5].subtitulo,
                   descricao: produtos[5].descricao,
                   url_imagens: produtos[5].url_imagens,
+                  preco: "140",
                 })
               }
             />
           </TouchableOpacity>
         </View>
         <View style={{ flexDirection: "row", justifyContent: "space-around" }}>
-          <TouchableOpacity onPress={() => add(produtos[6])}>
+          <TouchableOpacity>
             <Produtos
               img={produtos[6].url_imagens}
               preco={"R$100,00"}
@@ -176,11 +178,12 @@ export default function Home() {
                   subtitulo: produtos[6].subtitulo,
                   descricao: produtos[6].descricao,
                   url_imagens: produtos[6].url_imagens,
+                  preco: "100",
                 })
               }
             />
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => add(produtos[7])}>
+          <TouchableOpacity>
             <Produtos
               img={produtos[7].url_imagens}
               preco={"R$100,00"}
@@ -191,6 +194,7 @@ export default function Home() {
                   subtitulo: produtos[7].subtitulo,
                   descricao: produtos[7].descricao,
                   url_imagens: produtos[7].url_imagens,
+                  preco: "100",
                 })
               }
             />

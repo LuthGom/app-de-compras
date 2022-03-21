@@ -6,8 +6,8 @@ import Detail from "./pages/Detail";
 import Start from "./pages/Start";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
-import CartProvider from "./context/Cart";
 import Cart from "./pages/Cart";
+import CartProvider from "./context/CartContext";
 const Stack = createNativeStackNavigator();
 export default function Routes() {
   return (

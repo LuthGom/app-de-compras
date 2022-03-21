@@ -1,4 +1,4 @@
-import { View, TouchableOpacity } from "react-native";
+import { View, TouchableOpacity, Text } from "react-native";
 import React from "react";
 import { Feather } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
@@ -7,13 +7,16 @@ export default function ShoppingCart() {
   return (
     <View>
       <TouchableOpacity
-        style={{ width: "100%" }}
+        style={{ width: "100%", backgroundColor: "#1C1C1C" }}
         onPress={() => navigation.navigate("Cart")}
       >
+        <Text style={{ color: "white", textAlign: "center", fontSize: 20 }}>
+          0
+        </Text>
         <Feather
           name="shopping-cart"
           size={30}
-          color="black"
+          color="white"
           style={{ textAlign: "center", margin: 10 }}
         />
       </TouchableOpacity>
