@@ -1,11 +1,13 @@
-import { View, TouchableOpacity, StyleSheet, Text } from "react-native";
+import { View, TouchableOpacity, StyleSheet, Text, Button } from "react-native";
 import React from "react";
 
-export default function Button() {
+export default function Buy({ title }) {
   return (
     <View style={styles.container}>
       <TouchableOpacity style={styles.btnContainer}>
-        <Text style={styles.title}>COMPRAR</Text>
+        <Text t style={styles.title}>
+          {title}
+        </Text>
       </TouchableOpacity>
     </View>
   );

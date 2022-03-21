@@ -1,6 +1,5 @@
-import { StyleSheet, Text, TouchableOpacity, View, Image } from "react-native";
-import React, { useState, useEffect } from "react";
-import Api from "../../services/Api";
+import { StyleSheet, Text, TouchableOpacity, View, Image, FlatList } from "react-native";
+import React from "react";
 export default function Produtos({
   img,
   titulo,

@@ -10,13 +10,13 @@ import {
 import { MaterialIcons } from "@expo/vector-icons";
 import Produtos from "../../components/Produtos";
 import { useNavigation } from "@react-navigation/native";
-import { NavigationContainer } from "@react-navigation/native";
-import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
-import Detail from "../Detail";
 import Api from "../../services/Api";
-const Tab = createMaterialBottomTabNavigator();
-
+import { useCart } from "../../context/Cart";
+import Cart from "../Cart";
+import ShoppingCart from "../../components/ShoppingCart";
 export default function Home() {
+  const { add } = useCart();
+
   const navigation = useNavigation();
   const [produtos, setProdutos] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -48,7 +48,9 @@ export default function Home() {
     <View style={styles.container}>
       <View style={styles.header}>
         <Image
-          // source={require("../../../assets/icon.png")}
+          source={{
+            uri: "https://cdn.pixabay.com/photo/2015/11/28/11/26/sale-1067126_960_720.jpg",
+          }}
           style={styles.image}
         />
         <View style={styles.textContainer}>
@@ -67,70 +69,135 @@ export default function Home() {
       <ScrollView>
         <Text style={styles.text}>LANÇAMENTOS</Text>
         <View style={{ flexDirection: "row", justifyContent: "space-around" }}>
-          <Produtos
-            img={produtos[0].url_imagens}
-            preco={"R$100,00"}
-            titulo={produtos[0].titulo}
-            subtitulo={produtos[0].subtitulo}
-            onClick={() => navigation.navigate("Detail")}
-          />
-          <Produtos
-            img={produtos[1].url_imagens}
-            preco={"R$100,00"}
-            titulo={produtos[1].titulo}
-            subtitulo={produtos[1].subtitulo}
-            onClick={() => navigation.navigate("Detail")}
-          />
+          <TouchableOpacity onPress={() => add(produtos[0])}>
+            <Produtos
+              img={produtos[0].url_imagens}
+              preco={"R$100,00"}
+              titulo={produtos[0].titulo}
+              subtitulo={produtos[0].subtitulo}
+              onClick={() =>
+                navigation.navigate("Detail", {
+                  subtitulo: produtos[0].subtitulo,
+                  descricao: produtos[0].descricao,
+                  url_imagens: produtos[0].url_imagens,
+                })
+              }
+            />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => add(produtos[1])}>
+            <Produtos
+              img={produtos[1].url_imagens}
+              preco={"R$100,00"}
+              titulo={produtos[1].titulo}
+              subtitulo={produtos[1].subtitulo}
+              onClick={() =>
+                navigation.navigate("Detail", {
+                  subtitulo: produtos[1].subtitulo,
+                  descricao: produtos[1].descricao,
+                  url_imagens: produtos[1].url_imagens,
+                })
+              }
+            />
+          </TouchableOpacity>
         </View>
         <View style={{ flexDirection: "row", justifyContent: "space-around" }}>
-          <Produtos
-            img={produtos[2].url_imagens}
-            preco={"R$80,00"}
-            titulo={produtos[2].titulo}
-            subtitulo={produtos[2].subtitulo}
-            onClick={() => navigation.navigate("Detail")}
-          />
-          <Produtos
-            img={produtos[3].url_imagens}
-            preco={"R$65,00"}
-            titulo={produtos[3].titulo}
-            subtitulo={produtos[3].subtitulo}
-            onClick={() => navigation.navigate("Detail")}
-          />
+          <TouchableOpacity onPress={() => add(produtos[2])}>
+            <Produtos
+              img={produtos[2].url_imagens}
+              preco={"R$80,00"}
+              titulo={produtos[2].titulo}
+              subtitulo={produtos[2].subtitulo}
+              onClick={() =>
+                navigation.navigate("Detail", {
+                  subtitulo: produtos[2].subtitulo,
+                  descricao: produtos[2].descricao,
+                  url_imagens: produtos[2].url_imagens,
+                })
+              }
+            />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => add(produtos[3])}>
+            <Produtos
+              img={produtos[3].url_imagens}
+              preco={"R$65,00"}
+              titulo={produtos[3].titulo}
+              subtitulo={produtos[3].subtitulo}
+              onClick={() =>
+                navigation.navigate("Detail", {
+                  subtitulo: produtos[3].subtitulo,
+                  descricao: produtos[3].descricao,
+                  url_imagens: produtos[3].url_imagens,
+                })
+              }
+            />
+          </TouchableOpacity>
         </View>
         <View style={{ flexDirection: "row", justifyContent: "space-around" }}>
-          <Produtos
-            img={produtos[4].url_imagens}
-            preco={"R$35,00"}
-            titulo={produtos[4].titulo}
-            subtitulo={produtos[4].subtitulo}
-            onClick={() => navigation.navigate("Detail")}
-          />
-          <Produtos
-            img={produtos[5].url_imagens}
-            preco={"R$100,00"}
-            titulo={produtos[5].titulo}
-            subtitulo={produtos[5].subtitulo}
-            onClick={() => navigation.navigate("Detail")}
-          />
+          <TouchableOpacity onPress={() => add(produtos[4])}>
+            <Produtos
+              img={produtos[4].url_imagens}
+              preco={"R$135,00"}
+              titulo={produtos[4].titulo}
+              subtitulo={produtos[4].subtitulo}
+              onClick={() =>
+                navigation.navigate("Detail", {
+                  subtitulo: produtos[4].subtitulo,
+                  descricao: produtos[4].descricao,
+                  url_imagens: produtos[4].url_imagens,
+                })
+              }
+            />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => add(produtos[5])}>
+            <Produtos
+              img={produtos[5].url_imagens}
+              preco={"R$140,00"}
+              titulo={produtos[5].titulo}
+              subtitulo={produtos[5].subtitulo}
+              onClick={() =>
+                navigation.navigate("Detail", {
+                  subtitulo: produtos[5].subtitulo,
+                  descricao: produtos[5].descricao,
+                  url_imagens: produtos[5].url_imagens,
+                })
+              }
+            />
+          </TouchableOpacity>
         </View>
         <View style={{ flexDirection: "row", justifyContent: "space-around" }}>
-          <Produtos
-            img={produtos[6].url_imagens}
-            preco={"R$100,00"}
-            titulo={produtos[6].titulo}
-            subtitulo={produtos[6].subtitulo}
-            onClick={() => navigation.navigate("Detail")}
-          />
-          <Produtos
-            img={produtos[7].url_imagens}
-            preco={"R$100,00"}
-            titulo={produtos[7].titulo}
-            subtitulo={produtos[7].subtitulo}
-            onClick={() => navigation.navigate("Detail")}
-          />
+          <TouchableOpacity onPress={() => add(produtos[6])}>
+            <Produtos
+              img={produtos[6].url_imagens}
+              preco={"R$100,00"}
+              titulo={produtos[6].titulo}
+              subtitulo={produtos[6].subtitulo}
+              onClick={() =>
+                navigation.navigate("Detail", {
+                  subtitulo: produtos[6].subtitulo,
+                  descricao: produtos[6].descricao,
+                  url_imagens: produtos[6].url_imagens,
+                })
+              }
+            />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => add(produtos[7])}>
+            <Produtos
+              img={produtos[7].url_imagens}
+              preco={"R$100,00"}
+              titulo={produtos[7].titulo}
+              subtitulo={produtos[7].subtitulo}
+              onClick={() =>
+                navigation.navigate("Detail", {
+                  subtitulo: produtos[7].subtitulo,
+                  descricao: produtos[7].descricao,
+                  url_imagens: produtos[7].url_imagens,
+                })
+              }
+            />
+          </TouchableOpacity>
         </View>
       </ScrollView>
+      <ShoppingCart />
     </View>
   );
 }
@@ -145,6 +212,7 @@ const styles = StyleSheet.create({
   },
   image: {
     width: "100%",
+    height: 100,
   },
   textContainer: {
     flexDirection: "row",
