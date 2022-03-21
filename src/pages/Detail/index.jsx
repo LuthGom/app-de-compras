@@ -6,7 +6,6 @@ import {
   Image,
   TouchableOpacity,
 } from "react-native";
-import React, { useState } from "react";
 import Dot from "../../components/Dot";
 import SizeButton from "../../components/SizeButton";
 import BuyButton from "../../components/Button";
@@ -14,9 +13,10 @@ import Footer from "../../components/Footer";
 import ShoppingCart from "../../components/ShoppingCart";
 import { useNavigation } from "@react-navigation/native";
 
-export default function Detail({ route }) {
-  // const [cart, setCart] = useState([]);
-  const navigation = useNavigation();
+export default function Detail({route}) {
+
+const navigation = useNavigation();
+  
   return (
     <View style={styles.container}>
       <ScrollView>
@@ -26,11 +26,11 @@ export default function Detail({ route }) {
         />
         <View>
           <View>
-            <Text style={[styles.title, { fontSize: 24 }]}>R$ 100,00</Text>
+            <Text style={[styles.title, { fontSize: 24 }]}>{route.params?.preco}</Text>
           </View>
           <View opacity={0.4}>
             <Text style={[styles.title, { fontSize: 30 }]}>
-              {route.params?.subtitulo}{" "}
+              {route.params?.subtitulo}
             </Text>
           </View>
           <View style={styles.dotContainer}>
@@ -59,14 +59,11 @@ export default function Detail({ route }) {
           <TouchableOpacity>
             <BuyButton
               title="ADD AO CARRINHO"
-              onPress={() => (
-              
-                navigation.navigate("Cart", {
-                  url_imagens: route.params?.img,
-                  subtitulo: route.params?.subtitulo,
-                  preco: route.params?.preco,
-                })
-              )}
+              onPress={() => navigation.navigate("Cart", {
+                imagem: route.params?.url_imagens,
+                titulo: route.params?.subtitulo,
+                preco: route.params?.preco
+              })}
             />
           </TouchableOpacity>
 

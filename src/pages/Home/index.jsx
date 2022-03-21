@@ -9,13 +9,14 @@ import {
 } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import Produtos from "../../components/Produtos";
-import { useNavigation } from "@react-navigation/native";
 import Api from "../../services/Api";
 import ShoppingCart from "../../components/ShoppingCart";
+import { useNavigation } from "@react-navigation/native";
 export default function Home() {
   const navigation = useNavigation();
   const [produtos, setProdutos] = useState([]);
   const [loading, setLoading] = useState(true);
+
   const get = () => {
     fetch(Api + "/produtos", {
       method: "GET",
@@ -87,7 +88,7 @@ export default function Home() {
               preco={"R$100,00"}
               titulo={produtos[1].titulo}
               subtitulo={produtos[1].subtitulo}
-              onClick={() =>
+              onClick={
                 navigation.navigate("Detail", {
                   subtitulo: produtos[1].subtitulo,
                   descricao: produtos[1].descricao,
