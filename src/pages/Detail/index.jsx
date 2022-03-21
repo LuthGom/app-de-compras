@@ -11,11 +11,10 @@ import Dot from "../../components/Dot";
 import SizeButton from "../../components/SizeButton";
 import BuyButton from "../../components/Button";
 import Footer from "../../components/Footer";
-import { useCart } from "../../context/Cart";
 import { useNavigation } from "@react-navigation/native";
 import ShoppingCart from "../../components/ShoppingCart";
 export default function Detail({ route, item }) {
-  const { add } = useCart();
+  const navigation = useNavigation()
   return (
     <View style={styles.container}>
       <ScrollView>
@@ -55,10 +54,10 @@ export default function Detail({ route, item }) {
             <Text style={styles.textContent}>{route.params?.descricao}</Text>
           </View>
           <BuyButton title="COMPRAR" />
-          <TouchableOpacity onPress={() => add(item)}>
+          <TouchableOpacity onPress={() => navigation.navigate("Cart")}>
             <BuyButton title="ADD AO CARRINHO" />
           </TouchableOpacity>
-
+            
           <View style={styles.line}></View>
 
           <Footer />

@@ -6,12 +6,10 @@ import Detail from "./pages/Detail";
 import Start from "./pages/Start";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
-import CartProvider from "./context/Cart";
 import Cart from "./pages/Cart";
 const Stack = createNativeStackNavigator();
 export default function Routes() {
   return (
-    <CartProvider>
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen
@@ -40,6 +38,5 @@ export default function Routes() {
           <Stack.Screen name="Cart" component={Cart} />
         </Stack.Navigator>
       </NavigationContainer>
-    </CartProvider>
   );
 }

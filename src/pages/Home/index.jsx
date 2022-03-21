@@ -11,11 +11,8 @@ import { MaterialIcons } from "@expo/vector-icons";
 import Produtos from "../../components/Produtos";
 import { useNavigation } from "@react-navigation/native";
 import Api from "../../services/Api";
-import { useCart } from "../../context/Cart";
-import Cart from "../Cart";
 import ShoppingCart from "../../components/ShoppingCart";
 export default function Home() {
-  const { add } = useCart();
 
   const navigation = useNavigation();
   const [produtos, setProdutos] = useState([]);
@@ -31,6 +28,7 @@ export default function Home() {
       .then((data) => {
         const filter = data.Produtos;
         setProdutos({ ...filter });
+
         setLoading(false);
       })
       .catch((erro) => {
@@ -69,22 +67,15 @@ export default function Home() {
       <ScrollView>
         <Text style={styles.text}>LANÇAMENTOS</Text>
         <View style={{ flexDirection: "row", justifyContent: "space-around" }}>
-          <TouchableOpacity onPress={() => add(produtos[0])}>
+          <TouchableOpacity onPress={() => add(produtos[0].titulo)}>
             <Produtos
               img={produtos[0].url_imagens}
               preco={"R$100,00"}
               titulo={produtos[0].titulo}
               subtitulo={produtos[0].subtitulo}
-              onClick={() =>
-                navigation.navigate("Detail", {
-                  subtitulo: produtos[0].subtitulo,
-                  descricao: produtos[0].descricao,
-                  url_imagens: produtos[0].url_imagens,
-                })
-              }
             />
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => add(produtos[1])}>
+          <TouchableOpacity >
             <Produtos
               img={produtos[1].url_imagens}
               preco={"R$100,00"}
