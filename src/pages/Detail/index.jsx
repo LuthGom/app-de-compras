@@ -23,7 +23,7 @@ export default function Detail({ route }) {
     preco: route.params?.preco,
     id: route.params?.id,
   };
-  async function handleASyncStorage({route}) {
+  async function handleASyncStorage() {
     try {
       await AsyncStorage.setItem(`${propriedades.id}`, JSON.stringify(propriedades));
       navigation.navigate("Cart");

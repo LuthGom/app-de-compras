@@ -22,6 +22,7 @@ export default function Login() {
     })
       .then((resposta) => resposta.json())
       .then((data) => {
+        
         navigation.navigate("Home");
       })
       .catch((erro) => {

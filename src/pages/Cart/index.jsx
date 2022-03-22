@@ -14,6 +14,9 @@ import CartItem from "../../components/CartItem";
 export default function Cart({ route }) {
   const [data, setData] = useState([]);
 
+
+
+
   async function getData() {
     try {
       const keys = await AsyncStorage.getAllKeys();
@@ -25,7 +28,6 @@ export default function Cart({ route }) {
           result.push(JSON.parse(values[j][1]));
         }
         setData([...result]);
-        console.log("data", data);
       }
     } catch (erro) {
       console.log(erro);
@@ -52,7 +54,6 @@ export default function Cart({ route }) {
             </Text>
           </View>
           {data.map((item) => {
-            console.log(item);
             if (item !== "undefined") {
               return (
                 <CartItem item={item}/>
