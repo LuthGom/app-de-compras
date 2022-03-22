@@ -12,8 +12,8 @@ import Produtos from "../../components/Produtos";
 import { useNavigation } from "@react-navigation/native";
 import Api from "../../services/Api";
 import ShoppingCart from "../../components/ShoppingCart";
+import Logout from "../../components/Logout";
 export default function Home() {
-
   const navigation = useNavigation();
   const [produtos, setProdutos] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -73,9 +73,18 @@ export default function Home() {
               preco={"R$100,00"}
               titulo={produtos[0].titulo}
               subtitulo={produtos[0].subtitulo}
+              onClick={() =>
+                navigation.navigate("Detail", {
+                  subtitulo: produtos[0].subtitulo,
+                  descricao: produtos[0].descricao,
+                  url_imagens: produtos[0].url_imagens,
+                  preco: 100,
+                  id: produtos[0].id,
+                })
+              }
             />
           </TouchableOpacity>
-          <TouchableOpacity >
+          <TouchableOpacity>
             <Produtos
               img={produtos[1].url_imagens}
               preco={"R$100,00"}
@@ -86,6 +95,8 @@ export default function Home() {
                   subtitulo: produtos[1].subtitulo,
                   descricao: produtos[1].descricao,
                   url_imagens: produtos[1].url_imagens,
+                  preco: 100,
+                  id: produtos[1].id,
                 })
               }
             />
@@ -103,6 +114,8 @@ export default function Home() {
                   subtitulo: produtos[2].subtitulo,
                   descricao: produtos[2].descricao,
                   url_imagens: produtos[2].url_imagens,
+                  preco: 80,
+                  id: produtos[2].id,
                 })
               }
             />
@@ -118,6 +131,8 @@ export default function Home() {
                   subtitulo: produtos[3].subtitulo,
                   descricao: produtos[3].descricao,
                   url_imagens: produtos[3].url_imagens,
+                  preco: 65,
+                  id: produtos[3].id,
                 })
               }
             />
@@ -135,6 +150,8 @@ export default function Home() {
                   subtitulo: produtos[4].subtitulo,
                   descricao: produtos[4].descricao,
                   url_imagens: produtos[4].url_imagens,
+                  preco: 135,
+                  id: produtos[4].id,
                 })
               }
             />
@@ -150,6 +167,8 @@ export default function Home() {
                   subtitulo: produtos[5].subtitulo,
                   descricao: produtos[5].descricao,
                   url_imagens: produtos[5].url_imagens,
+                  preco: 140,
+                  id: produtos[5].id,
                 })
               }
             />
@@ -167,6 +186,8 @@ export default function Home() {
                   subtitulo: produtos[6].subtitulo,
                   descricao: produtos[6].descricao,
                   url_imagens: produtos[6].url_imagens,
+                  preco: 100,
+                  id: produtos[6].id,
                 })
               }
             />
@@ -182,13 +203,18 @@ export default function Home() {
                   subtitulo: produtos[7].subtitulo,
                   descricao: produtos[7].descricao,
                   url_imagens: produtos[7].url_imagens,
+                  preco: 100,
+                  id: produtos[7].id,
                 })
               }
             />
           </TouchableOpacity>
         </View>
       </ScrollView>
-      <ShoppingCart />
+      <View style={{ flexDirection: "row", justifyContent: "space-around" }}>
+        <ShoppingCart />
+        <Logout />
+      </View>
     </View>
   );
 }

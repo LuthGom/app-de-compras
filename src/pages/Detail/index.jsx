@@ -13,22 +13,39 @@ import BuyButton from "../../components/Button";
 import Footer from "../../components/Footer";
 import { useNavigation } from "@react-navigation/native";
 import ShoppingCart from "../../components/ShoppingCart";
-export default function Detail({ route, item }) {
-  const navigation = useNavigation()
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import Logout from "../../components/Logout";
+export default function Detail({ route }) {
+  const navigation = useNavigation();
+  const propriedades = {
+    imagem: route.params?.url_imagens,
+    titulo: route.params?.subtitulo,
+    preco: route.params?.preco,
+    id: route.params?.id,
+  };
+  async function handleASyncStorage({route}) {
+    try {
+      await AsyncStorage.setItem(`${propriedades.id}`, JSON.stringify(propriedades));
+      navigation.navigate("Cart");
+    }catch(erro) {
+      console.log(erro);
+    }
+  }
+
   return (
     <View style={styles.container}>
       <ScrollView>
-        <Image
-          source={{ uri: route.params?.url_imagens }}
-          style={styles.image}
-        />
+        <Image source={{ uri: propriedades.imagem }} style={styles.image} />
         <View>
           <View>
-            <Text style={[styles.title, { fontSize: 24 }]}>R$ 100,00</Text>
+            <Text style={[styles.title, { fontSize: 24 }]}>
+              R$
+              {route.params?.preco},00
+            </Text>
           </View>
           <View opacity={0.4}>
             <Text style={[styles.title, { fontSize: 30 }]}>
-              {route.params?.subtitulo}{" "}
+              {propriedades.titulo}{" "}
             </Text>
           </View>
           <View style={styles.dotContainer}>
@@ -50,20 +67,22 @@ export default function Detail({ route, item }) {
           )}
 
           <View style={styles.textContent}>
-            <Text style={styles.textTitle}></Text>
             <Text style={styles.textContent}>{route.params?.descricao}</Text>
           </View>
           <BuyButton title="COMPRAR" />
-          <TouchableOpacity onPress={() => navigation.navigate("Cart")}>
-            <BuyButton title="ADD AO CARRINHO" />
+          <TouchableOpacity>
+            <BuyButton title="ADD AO CARRINHO" onClick={handleASyncStorage} />
           </TouchableOpacity>
-            
+
           <View style={styles.line}></View>
 
           <Footer />
         </View>
       </ScrollView>
-      <ShoppingCart />
+      <View style={{ flexDirection: "row", justifyContent: 'space-around' }}>
+        <ShoppingCart />
+        <Logout />
+      </View>
     </View>
   );
 }
